@@ -7,7 +7,7 @@ services:
     - "80:80"
     volumes:
     - ./public_html:/public_html
-    - .conf.d:/etc/nginx/conf.d
+    - ./conf.d:/etc/nginx/conf.d
     links:
     - php
   php:
