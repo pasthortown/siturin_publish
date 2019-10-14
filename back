@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  web:
+    image: nginx:latest
+    ports:
+    - "8080:80"
+    volumes:
+    - ./public_html:/public_html
+    - .conf.d:/etc/nginx/conf.d
+    links:
+    - php
+  php:
+    image: pasthortown/php:latest
+    ports:
+    - "8000:8000"
+    volumes:
+    - ./public_html:/public_html
+    links:
+    - postgres
+  postgres:
+    image: postgres:latest
+    ports:
+    - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+  node:
+    image: pasthortown/lsdevtools:latest
+    ports:
+    - "4200:4200"
+    - "8100:8100"
+    volumes:
+    - ./proyectos:/proyectos
+    environment:  
+      PATH: ${PATH}:/opt/android-sdk-linux/tools
+      PATH: ${PATH}:/opt/android-sdk-linux/platform-tools
