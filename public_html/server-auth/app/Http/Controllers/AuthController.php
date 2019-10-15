@@ -141,7 +141,7 @@ class AuthController extends Controller
       DB::commit();
       return $this->send_mail($email, $user->name, $subject, $message, env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
     } catch (Exception $e) {
-      return response()->json($e,400);
+      return response()->json($e->getMessage(),400);
     }
   }
 
