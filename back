@@ -1,8 +1,0 @@
-MAIL_DRIVER=smtp
-MAIL_HOST=mail-siturin
-MAIL_PORT=587
-MAIL_USERNAME=siturin@turismo.gob.ec
-MAIL_PASSWORD=S1tur1n.8865
-MAIL_ENCRYPTION=tls
-MAIL_FROM_ADDRESS=siturin@turismo.gob.ec
-MAIL_FROM_NAME="MINTUR - SITURIN"
