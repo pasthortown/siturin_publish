@@ -1,0 +1,13 @@
+upstream app {
+	server web1;
+	server web2;
+}
+
+server {
+    server_name ws-siturin-alimentos.turismo.gob.ec ws-siturin-alojamiento.turismo.gob.ec ws-siturin-auth.turismo.gob.ec ws-siturin-base.turismo.gob.ec ws-siturin-catastro.turismo.gob.ec ws-siturin-consultor.turismo.gob.ec ws-siturin-dinardap.turismo.gob.ec ws-siturin-exporter.turismo.gob.ec ws-siturin-financiero.turismo.gob.ec ws-siturin-mailer.turismo.gob.ec siturin-pruebas.turismo.gob.ec;
+    underscores_in_headers on;
+    location / {
+		proxy_set_header	Host $host;
+		proxy_pass http://app;
+	}
+}

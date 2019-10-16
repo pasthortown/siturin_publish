@@ -1,0 +1,13 @@
+upstream app {
+	server web1;
+	server web2;
+}
+
+server {
+    server_name ws-produccion--alimentos.turismo.gob.ec ws-produccion--alojamiento.turismo.gob.ec ws-produccion--auth.turismo.gob.ec ws-produccion--base.turismo.gob.ec ws-produccion--catastro.turismo.gob.ec ws-produccion--consultor.turismo.gob.ec ws-produccion--dinardap.turismo.gob.ec ws-produccion--exporter.turismo.gob.ec ws-produccion--financiero.turismo.gob.ec ws-produccion--mailer.turismo.gob.ec siturin-pruebas.turismo.gob.ec;
+    underscores_in_headers on;
+    location / {
+		proxy_set_header	Host $host;
+		proxy_pass http://app;
+	}
+}
