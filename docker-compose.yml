@@ -1,19 +1,37 @@
 version: '3'
 
 services:
-  web:
+  loadBalancer:
     image: nginx:latest
     ports:
     - "80:80"
     volumes:
-    - ./public_html:/public_html
-    - ./conf.d:/etc/nginx/conf.d
+    - ./conf_load_balancer.d:/etc/nginx/conf.d
     links:
-    - php
-  php:
+    - web1
+    - web2
+  web1:
+    image: nginx:latest
+    volumes:
+    - ./public_html:/public_html
+    - ./conf1.d:/etc/nginx/conf.d
+    links:
+    - php1
+  php1:
     image: pasthortown/php:latest
-    ports:
-    - "8000:8000"
+    volumes:
+    - ./public_html:/public_html
+    links:
+    - postgres
+  web2:
+    image: nginx:latest
+    volumes:
+    - ./public_html:/public_html
+    - ./conf2.d:/etc/nginx/conf.d
+    links:
+    - php2
+  php2:
+    image: pasthortown/php:latest
     volumes:
     - ./public_html:/public_html
     links:
