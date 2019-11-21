@@ -12,7 +12,7 @@ class RegisterType extends Model
      * @var array
      */
     protected $fillable = [
-       'name','description','code','father_code',
+       'name','description','code','father_code','min_points',
     ];
 
     /**
@@ -37,6 +37,21 @@ class RegisterType extends Model
     function CapacityType()
     {
        return $this->belongsTo('App\CapacityType');
+    }
+
+    function KitchenType()
+    {
+       return $this->belongsTo('App\KitchenType');
+    }
+
+    function ServiceType()
+    {
+       return $this->belongsTo('App\ServiceType');
+    }
+
+    function RegisterTypeImage()
+    {
+       return $this->belongsTo('App\RegisterTypeImage');
     }
 
 }

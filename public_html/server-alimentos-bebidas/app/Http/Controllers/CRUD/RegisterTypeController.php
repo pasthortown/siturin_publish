@@ -45,6 +45,7 @@ class RegisterTypeController extends Controller
           $registertype->description = $result['description'];
           $registertype->code = $result['code'];
           $registertype->father_code = $result['father_code'];
+          $registertype->min_points = $result['min_points'];
           $registertype->save();
           DB::commit();
        } catch (Exception $e) {
@@ -63,6 +64,7 @@ class RegisterTypeController extends Controller
              'description'=>$result['description'],
              'code'=>$result['code'],
              'father_code'=>$result['father_code'],
+             'min_points'=>$result['min_points'],
           ]);
           DB::commit();
        } catch (Exception $e) {
@@ -103,6 +105,7 @@ class RegisterTypeController extends Controller
              'description'=>$result['description'],
              'code'=>$result['code'],
              'father_code'=>$result['father_code'],
+             'min_points'=>$result['min_points'],
            ]);
          } else {
           $registertype = new RegisterType();
@@ -111,6 +114,7 @@ class RegisterTypeController extends Controller
           $registertype->description = $result['description'];
           $registertype->code = $result['code'];
           $registertype->father_code = $result['father_code'];
+          $registertype->min_points = $result['min_points'];
           $registertype->save();
          }
        }

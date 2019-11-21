@@ -20,6 +20,7 @@ class CreateRegisterTypesTable extends Migration
           $table->longText('description')->nullable($value = true);
           $table->string('code',100)->nullable($value = true);
           $table->string('father_code',100)->nullable($value = true);
+          $table->integer('min_points')->nullable($value = true);
        });
     }
 
